@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h1>QR Code Generator</h1>
+    <p>Enter text (multi-line supported)</p>
+
+    <form method="POST">
+        <textarea name="text" placeholder="Enter your text here..." required></textarea>
+
+        <button type="submit">Generate QR</button>
+    </form>
+
+    {% if qr_time %}
+        <img 
+          src="{{ url_for('static', filename='qr.png') }}?v={{ qr_time }}"
+          alt="QR Code"
+        >
+
+        <a href="/download" class="download-btn">Download QR</a>
+    {% endif %}
+</div>
+
+</body>
+</html>
