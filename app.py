@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 QR_PATH = os.path.join("static", "qr.png")
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     qr_time = None
@@ -21,6 +22,7 @@ def index():
             )
             qr.add_data(text)
             qr.make(fit=True)
+            print("....")
 
             img = qr.make_image(fill_color="black", back_color="white")
             img.save(QR_PATH)
